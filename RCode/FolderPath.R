@@ -1,0 +1,1 @@
+folderPath<-"C:\\Users\\Thanos\\Documents\\UCL\\WORK\\Projects\\Decision Making\\Risk Taking\\CODE_AND_DATA\\"

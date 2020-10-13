@@ -1,0 +1,158 @@
+---
+title: "Supplementary Materials Non-Clinical"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# S0 and S1 Study EDE-Q Restraint Slopes      
+This table shows the results of 6 Linear Regressions (nbClicks~AGE+BMI+EDE_Q_Restraint), one per condition for Study 0, Study 1 and the merge of Study 0 + Study 1. \* means *p<0.05*, \*\* means *p<0.01* and \*\*\* means *p<0.001*. BODE stands for *Body Deflate* and BOIN for *Body Inflate*.      
+
+```{r printMLM_S0b, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(multiLevelTable_S0, "pandoc", align = 'r')
+```
+       
+In all cases (Study 0, Study 1 and Study 0 + Study 1) the slope of the *Body Inflate* is more negative than the slope of *Body Deflate*. This means that, in line with our hypothesis, as EDEQ Restraint increases, participants take less risk in *Body Inflate* relative to *Body Deflate*. The results are not statistically significant, but the effect size of the comparison is proportionally high comparing to the slopes (e.g. for Study 0 + Study 1 we have (BODE-BOIN)/BOIN= `r round(100*(printS0S1BODE-printS0S1BOIN)/printS0S1BOIN,1)` %), which indicated that with higher power and a within-participants design, we would be able to measure the relevant interactions more accurately.
+      
+   
+
+
+# Main Results Multi-level Step-wise Analysis       
+
+## Clicks ~ Stimulus\*Direction\*EDE-Q Restraint (S0+S1+S2)          
+### Models Description     
+
+#### Random Effects     
+PARTICIPANT ID (SUBJ_ID), ORDER (OrderF), EXPERIMENTER       
+
+#### Fixed Effects     
+```{r avModels_S0S1S2_clicks, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(avModels_S0S1S2_clicks, "pandoc", align = 'r')
+```
+ 
+### Step-wise Comparison Results             
+     
+```{r avRes_S0S1S2_clicks, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(avRes_S0S1S2_clicks, "pandoc", align = 'r')
+```
+  
+### Final Model Coefficients    
+
+```{r sum_S0S1S2_clicks, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(sum_S0S1S2_clicks, "pandoc", align = 'r')
+```
+        
+  
+### Inter-correlation Coefficients (final model)    
+
+
+```{r icc_S0S1S2_clicks, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(icc_S0S1S2_clicks, "pandoc", align = 'r')
+```
+        
+## Hesitance ~ Stimulus\*Direction\*EDE-Q Restraint (S0+S1+S2)       
+
+### Models Description     
+
+#### Random Effects     
+Same as for "Clicks".     
+
+
+#### Fixed Effects     
+Same as for "Clicks".     
+          
+### Step-wise Comparison Results             
+     
+```{r avRes_S0S1S2_hesitance, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(avRes_S0S1S2_hesitance, "pandoc", align = 'r')
+```
+  
+### Final Model Coefficients    
+
+```{r sum_S0S1S2_hesitance, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(sum_S0S1S2_hesitance, "pandoc", align = 'r')
+```
+        
+  
+### Inter-correlation Coefficients (final model)    
+
+
+```{r icc_S0S1S2_hesitance, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(icc_S0S1S2_hesitance, "pandoc", align = 'r')
+```
+        
+
+
+## Probability of Loss (exploration & exploitation) ~ Stimulus\*Direction\*EDE-Q Restraint (S0+S1+S2) 
+
+```{r resultsPBurst, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(resultsPBurst, "pandoc", align = 'r')
+```
+  
+# Model Validation
+## Model Validation Exploration vs Exploitation: Coefficient of Variation      
+The Coefficient of Variation is higher (significant result) in Exploration than in Exploitation.    
+
+```{r sum_zz2_diff_e, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(round(sum_z1z2_diff_e$coefficients,3), "pandoc", align = 'r')
+```
+
+
+## Model Validation Exploration vs Exploitation:  Prior vs Posterior Hesitance     
+Hesitance is higher (significant result) in Exploration than in Exploitation.    
+
+```{r sum_hes1hes2_diff_e_, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(round(sum_hes1hes2_diff_e$coefficients,3), "pandoc", align = 'r')
+```
+
+
+
+# Control Variable Analysis     
+## Correlations: EDE-Q vs Control Variables    
+```{r corMatrix_all, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(corMatrix_r, "pandoc", align = 'r')
+```
+
+
+## DASS-21, BIS-11, OCIR, BIDQ covariates for Risk-taking     
+To examine the possible effect of covariates in our Risk-taking main findings, we used the same step-wise Multi-level Modelling analysis with final-step models:   
+nbClicks~XXX+AGE+BMI+EDE_Q_Restraint+(1|SUBJ_ID)+(1|Order)+(1|Experimenter)     
+nbClicks~XXX+AGE+BMI+Stimulus\*Direction\*EDE_Q_Restraint+(1|SUBJ_ID)+(1|Order)+(1|Experimenter)     
+where XXX was the relevant Covariate.            
+
+```{r covariatesPumping, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(covariatesPumping, "pandoc", align = 'r')
+```
+       
+We notice that in all cases, the three-way interaction remains statistically significant.    
+
+
+## DASS-21, BIS-11, OCIR, BIDQ covariates for Hesitance   
+To examine the possible effect of covariates in our main Hesitance findings, we used the same step-wise Multi-level Modelling analysis with final-step models:    
+hesitance~XXX+AGE+BMI+EDE_Q_Restraint+(1|SUBJ_ID)+(1|Order)+(1|Experimenter)     
+hesitance~XXX+AGE+BMI+Stimulus\*Direction\*EDE_Q_Restraint+(1|SUBJ_ID)+(1|Order)+(1|Experimenter)     
+where XXX was the relevant Covariate.      
+```{r covariatesHesitance, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(covariatesHesitance, "pandoc", align = 'r')
+```
+
+We notice that in all cases, the three-way interaction remains statistically significant.        
+           
+# EDE-Q       
+
+## Correlations: EDE-Q subscales     
+
+```{r corMatrix_edeq, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(corMatrix_r2, "pandoc", align = 'r')
+```
+
+## EDE-Q Cronbach Alpha    
+S0:   `r cron_alpha_edeq_s0`    
+      
+S1:   `r cron_alpha_edeq_s1`    
+
+S2:  `r cron_alpha_edeq_s2`    
+
+S0+S1+S2:  `r cron_alpha_edeq_all`    

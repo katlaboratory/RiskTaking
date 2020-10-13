@@ -1,0 +1,197 @@
+---
+title: "Supplementary Materials Clinical"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Main Results Multi-level Step-wise Analysis 
+## Clicks ~ Stimulus\*Direction\*GROUP          
+### Models Description     
+
+#### Random Effects     
+PARTICIPANT ID (SUBJ_ID), ORDER (OrderF)       
+
+#### Fixed Effects     
+```{r avModels_SDG_clicks, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(avModels_SDG_clicks, "pandoc", align = 'r')
+```
+ 
+### Step-wise Comparison Results             
+     
+```{r avRes_SDG_clicks, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(avRes_SDG_clicks, "pandoc", align = 'r')
+```
+  
+### Final Model Coefficients    
+
+```{r sum_SDG_clicks, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(sum_SDG_clicks, "pandoc", align = 'r')
+```
+        
+  
+### Inter-correlation Coefficients (final model)    
+
+
+```{r icc_SDG_clicks, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(icc_SDG_clicks, "pandoc", align = 'r')
+```
+        
+### Planned Contrasts: Stimulus\*GROUP      
+     
+```{r covariatesPumpingPostHocs, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(covariatesPumpingPostHocs, "pandoc", align = 'r')
+```
+
+
+## Hesitance ~ Stimulus\*Direction\*GROUP      
+
+### Models Description     
+
+#### Random Effects     
+Same as for "Clicks".     
+
+
+#### Fixed Effects     
+Same as for "Clicks".     
+          
+### Step-wise Comparison Results             
+     
+```{r avRes_SDG_hesitance, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(avRes_SDG_hesitance, "pandoc", align = 'r')
+```
+  
+### Final Model Coefficients    
+
+```{r sum_SDG_hesitance, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(sum_SDG_hesitance, "pandoc", align = 'r')
+```
+        
+  
+### Inter-correlation Coefficients (final model)    
+
+
+```{r icc_SDG_hesitance, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(icc_SDG_hesitance, "pandoc", align = 'r')
+```
+        
+
+
+
+### Planned Contrasts: Stimulus\*GROUP      
+     
+```{r covariatesHesitancePostHoc, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(covariatesHesitancePostHoc, "pandoc", align = 'r')
+```
+
+
+## Modelling Probability of Loss and Threshold (Exploration & Exploitation) ~ Stimulus\*Direction\*GROUP
+
+```{r resultsPBurst, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(resultsPBurst, "pandoc", align = 'r')
+```
+      
+# HC-L and HC-H group description/selection
+Two control groups were constructed from a pool of non-clinical participants. To account for the effect of BMI within the healthy controls, we first matched their BMI with that of the *AN-WR* group (which was achieved by selecting the participants with BMI less than the median of our sample), and then by splitting the remaining participants into group *HC-L* (Healthy Controls Low) who had EDEQ Restraint in the lowest quartile and group *HC-H* (Healthy Controls High) who had EDEQ Restraint in the highest quartile of our sample. We thus ended up with N=`r s4Descriptives_group[s4Descriptives_group$Group=="HC-L",]$N` participants in the *HC-L* group and  N=`r s4Descriptives_group[s4Descriptives_group$Group=="HC-H",]$N` participants in the *HC-H* group.     
+
+      
+
+# Control Variable Analysis 
+## DASS-21 covariates for Risk-taking     
+To examine the possible effect of covariates in our Risk-taking main findings, we used the same step-wise Multi-level Modelling analysis with final-step models: 
+nbClicks~XXX+AGE+BMI+GROUP+(1|SUBJ_ID)+(1|Order)     
+nbClicks~XXX+AGE+BMI+Stimulus\*Direction\*GROUP+(1|SUBJ_ID)+(1|Order)     
+where XXX was the relevant Covariate.            
+
+```{r covariatesPumping, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(covariatesPumping, "pandoc", align = 'r')
+```
+       
+We notice that in all cases, the three-way interaction remains statistically significant but the main effect of GROUP does not.    
+
+
+## DASS-21 covariates for Hesitance   
+To examine the possible effect of covariates in our main Hesitance findings, we used the same step-wise Multi-level Modelling analysis with final-step models:  
+hesitance~XXX+AGE+BMI+GROUP+(1|SUBJ_ID)+(1|Order)    
+hesitance~XXX+AGE+BMI+Stimulus\*Direction\*GROUP+(1|SUBJ_ID)+(1|Order)    
+where XXX was the relevant Covariate.      
+```{r covariatesHesitance, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(covariatesHesitance, "pandoc", align = 'r')
+```
+
+We notice that in all cases, both the main GROUP effect and the three-way interaction remain statistically significant.        
+           
+
+## Correlation Matrix  (AN&AN-WR)         
+
+```{r corMatrix_r, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(round(corMatrix_r,2), "pandoc", align = 'r')
+```
+  
+  
+## Within-groups Correlations     
+### AN    
+Correlations with EDE-Q Total:     
+
+```{r corMatrix_r4_an, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(round(corMatrix_r4_an,2), "pandoc", align = 'r')
+```
+
+p-Values:      
+
+```{r corMatrix_rp4_an, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(round(corMatrix_rp4_an,2), "pandoc", align = 'r')
+```
+
+### AN-WR     
+Correlations with EDE-Q Total:     
+
+```{r corMatrix_r4_re, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(round(corMatrix_r4_re,2), "pandoc", align = 'r')
+```
+
+p-Values:      
+
+```{r corMatrix_rp4_re, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(round(corMatrix_rp4_re,2), "pandoc", align = 'r')
+```
+
+## EDE-Q Cronbach alpha   
+*AN* and *AN-WR*:   `r cron_alpha_edeq_anre`    
+
+*HC-L* and *HC-H*:  `r cron_alpha_edeq_hclh`     
+
+*HC-L*, *AN*, *AN-WR*, *HC-H*:      `r cron_alpha_edeq_all`     
+
+
+# SUPERVISED Clustering and Predicting Groups: Binomial Logistic Regression    
+## Supervised Clustering Methods    
+The aim of this analysis is to predict the Group of a participant based on two measures linked to the *Body Increase* condition (because this condition was expected to have the most clear differences between groups): the model-generated *Prior Probability Of Burst Belief* (*Exploration*) and the overall *Hesitance* (with *AGE* as covariate).
+Step 1. We created a Logistic Binomial Regression model (*GROUP ~ AGE + BOIN_pBurst_1_L + BOIN_avgLastTrialTime_L*) using as "training" set for the model the *AN* and *HC-L* groups. 
+Step 2. We "predicted" the group of the data used to fit the model (*AN* and *HC-L*), for a number of clustering thresholds (Ratios in the plots). 
+Step 3. We "tested" the model on the *HC-H*, *HC-Excluded* (the healthy controls of study *S2* who were excluded from our initial selection of *HC-L* and *HC-H*, i.e. *S2* participants in either a) higher than Median BMI, or b) lower than median BMI and EDE-Q Restraint in the middle two quartiles) and *AN-WR* groups to examine the success percentage of the model classification (we do not have a "testing" *AN* group). 
+
+This provides validation of how well our behavioural measures (one directly from BART and the other from the model) can reverse-predict the participant groups. E.g. for threshold 0.45, the model correctly predicts/clusters:
+86% of the *AN* as *AN*, and
+87% of the *HC-L*, 83% of the *HC-H* and 75% of the *HC-Excluded* as *HC*.
+
+## Supervised Clustering Results    
+The results of the Binomial Logistic Regression were statistically significant for both main predictors, *Prior Probability Of Burst Belief* (*BOIN_pBurst_1_L*) and *Hesitance* (*BOIN_avgLastTrialTime_L*)
+
+```{r sumglm1, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(round(sumglm1$coefficients,2), "pandoc", align = 'r')
+```
+
+In the table below we display the results of the predictions of the model (classification of participants into Groups), both for the "training" set (*AN* and *HC-L* groups) and for the "testing" sets of *HC-H*, *HC-Excluded* and *AN-WR*:     
+
+
+```{r dtFrTruth, eval=TRUE, echo=FALSE, comment=""}
+knitr::kable(dtFrTruth, "pandoc", align = 'r')
+```
+
+For the "training" set (*AN* and *HC-L*), we notice that for certain threshold values (0.4 to 0.5) the model gave the best percentage predictions (on average higher than 84% prediction success rate). For the threshold range where the "training" set had its higher success (0.4 to 0.5), the "testing" set showed success rates lower than those of the "benchmark" *HC-L*, but in all cases higher than 73%, with *HC-H* being predicted with a higher success rate than *HC-Excluded*, possibly due to the by-definition difference in the *BMI* between the two groups. It was expected that the success rate for *HC-L* would be higher than those of *HC-H* and *HC-Excluded* because the model was not *trained* on the latter two datasets and possibly because of the *BMI* and *EDE-Q Restraint* differences that were used to create the groups in the first place.      
+
+Finally, the *AN-WR* group success rate was lower than the success rate in the classification of all the other groups which was expected as *AN* and *HC-L* (not *AN-WR*) were used to create the classification model. For the threshold 0.4 to 0.5, the success rate for the *AN-WR* was between 35% and 43% if they were to be flagged as *HC-L*, and if they were to be flagged as *AN* the success rate was between 65% and 57%.      
+
